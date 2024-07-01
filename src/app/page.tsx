@@ -1,10 +1,11 @@
-import Image from "next/image";
+import HeroSection from "@/sections/HeroSection";
+import TrendingSection from "@/sections/TrendingSection";
 
 export default function Home() {
   return (
-    <div>
-      <h1>Home</h1>
-      <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-    </div>
+    <>
+      <HeroSection />
+      <TrendingSection />
+    </>
   );
 }
