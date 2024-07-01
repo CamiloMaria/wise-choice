@@ -1,3 +1,5 @@
+import HeroCarousel from "@/components/HeroCarousel/HeroCarousel";
+import Searchbar from "@/components/Searchbar/Searchbar";
 import Image from "next/image";
 
 export default function HeroSection() {
@@ -25,10 +27,10 @@ export default function HeroSection() {
                         make wise choices.
                     </p>
 
-                    SearchBar
+                    <Searchbar />
                 </div>
 
-                HeroCarusel
+                <HeroCarousel />
             </div>
         </section>
     );
