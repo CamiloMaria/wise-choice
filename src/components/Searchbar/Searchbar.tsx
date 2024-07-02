@@ -1,12 +1,13 @@
 'use client'
 
+import { scrapeAndStoreProduct } from "@/lib/actions";
 import { FormEvent, useState } from "react";
 
 export default function Searchbar() {
     const [searchPrompt, setSearchPrompt] = useState('')
     const [isLoading, setIsLoading] = useState(false)
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         const isvalidAmazonUrl = (url: string) => {
             try {
                 const parsedURL = new URL(url)
@@ -28,7 +29,10 @@ export default function Searchbar() {
 
         try {
             setIsLoading(true)
+
+            const product = await scrapeAndStoreProduct(searchPrompt)
         } catch (error) {
+            console.error(error)
         } finally {
             setIsLoading(false)
         }
@@ -53,8 +57,9 @@ export default function Searchbar() {
             <button
                 type="submit"
                 className="searchbar-btn"
+                disabled={searchPrompt === '' || isLoading}
             >
-                Search
+                {isLoading ? 'Loading...' : 'Search'}
             </button>
         </form>
     );
